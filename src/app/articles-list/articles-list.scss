@@ -1,0 +1,22 @@
+.articles-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 45px;
+  gap: 50px;
+  margin-bottom: 40px !important;
+}
+
+.cross {
+  border: 1px solid #EFEFEF;
+  margin-top: 5px;
+}
+
+.result {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.space-down {
+  height: 10px;
+}

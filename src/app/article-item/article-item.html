@@ -1,1 +1,26 @@
-<p>article-item works!</p>
+<mat-card class="card" (click)="onCardClick()">
+  <mat-card-header class="card-image-header">
+    <div class="card-image">
+      <img src="{{ article.image_url }}">
+    </div>
+  </mat-card-header>
+
+  <mat-card-content class="card-content">
+    <div class="date-wrapper">
+      <div class="card-date"><mat-icon class="mat-icon-date" matPrefix>calendar_month</mat-icon>{{ article.published_at | date:'MMMM d\'th\', y'}}</div>
+    </div>
+
+    <mat-card-title class="article-title"
+        [innerHTML]="article.title | highlightSearch:searchRequest">
+    </mat-card-title>
+
+    <mat-card-subtitle class="article-description"
+        [innerHTML]="article.summary | highlightSearch:searchRequest">
+    </mat-card-subtitle>
+  </mat-card-content>
+
+  <mat-card-actions class="card-actions">
+    <div class="read-more" (click)="onCardClick()">Read more <mat-icon class="arrow-icon">arrow_forward</mat-icon></div>
+
+  </mat-card-actions>
+</mat-card>

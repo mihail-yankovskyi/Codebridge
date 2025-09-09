@@ -1,13 +1,19 @@
 import { IArticle } from "../../shared/interfaces/article.interface";
 
-export interface AppState {
-  loading: boolean;
+export interface IAppState {
+  loadingArticles: boolean;
+  loadingArticle: boolean;
   error: string | null;
   articles: IArticle[];
+  searchRequest: string;
+  selectedArticle: IArticle | null;
 }
 
-export const initialAppState: AppState = {
-  loading: false,
+export const initialAppState: IAppState = {
+  loadingArticles: false,
+  loadingArticle: false,
   error: null,
-  articles: []
+  articles: [],
+  searchRequest: '',
+  selectedArticle: null
 };

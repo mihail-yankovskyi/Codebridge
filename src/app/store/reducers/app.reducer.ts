@@ -6,22 +6,42 @@ export const appReducer = createReducer(
   initialAppState,
   on(AppActions.loadArticles, (state) => ({
     ...state,
-    loading: true,
+    loadingArticles: true,
     error: null
   })),
-  on(AppActions.loadArticlesSuccess, (state, { data }) => ({
+  on(AppActions.loadArticlesSuccess, (state, { articles }) => ({
     ...state,
-    loading: false,
-    data,
+    loadingArticles: false,
+    articles,
     error: null
   })),
   on(AppActions.loadArticlesFailure, (state, { error }) => ({
     ...state,
-    loading: false,
+    loadingArticles: false,
     error
   })),
   on(AppActions.clearError, (state) => ({
     ...state,
     error: null
+  })),
+  on(AppActions.saveSearchRequest, (state, { searchRequest }) => ({
+    ...state,
+    searchRequest
+  })),
+  on(AppActions.loadArticle, (state) => ({
+    ...state,
+    loadingArticle: true,
+    error: null
+  })),
+  on(AppActions.loadArticleSuccess, (state, { article }) => ({
+    ...state,
+    loadingArticle: false,
+    selectedArticle: article,
+    error: null
+  })),
+  on(AppActions.loadArticleFailure, (state, { error }) => ({
+    ...state,
+    loadingArticle: false,
+    error
   }))
 );

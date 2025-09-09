@@ -11,6 +11,7 @@ export interface IArticle {
   featured: true;
   launches: ILaunch[];
   events: IEvent[];
+  text?: string;
 }
 
 export interface IAuthor {
@@ -33,4 +34,11 @@ export interface ILaunch {
 export interface IEvent {
   event_id: number;
   provider: string;
+}
+
+export interface ISearchResponse {
+  count: number;
+  next: any;
+  previous: any;
+  results: IArticle[];
 }

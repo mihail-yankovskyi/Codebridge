@@ -1,1 +1,25 @@
-<p>article-details works!</p>
+@if(selectedArticle$ | async; as selectedArticle) {
+  <div class="details">
+    <div class="header">
+      <img src="{{ selectedArticle?.image_url }}">
+    </div>
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="title-wrapper">
+          <div class="title">{{ selectedArticle?.title }}</div>
+        </div>
+
+        <div class="text">{{ selectedArticle?.text }}</div>
+      </div>
+
+      <div (click)="onBackClick()" class="arrow-back-wrapper">
+        <mat-icon class="arrow-back">arrow_back</mat-icon>
+        Back to homepage
+      </div>
+    </div>
+  </div>
+
+} @else {
+  <p class="loading">Loading...</p>
+}
+

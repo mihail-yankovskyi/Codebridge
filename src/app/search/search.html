@@ -1,1 +1,10 @@
-<p>search works!</p>
+<div class="filter">Filter by keywords</div>
+<form class="search-form">
+  <mat-form-field class="search-field" appearance="outline">
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      placeholder="What article do you want to find?"
+      [formControl]="searchFormControl">
+  </mat-form-field>
+</form>

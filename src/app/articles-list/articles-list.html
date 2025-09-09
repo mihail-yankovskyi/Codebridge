@@ -1,1 +1,22 @@
-<p>articles-list works!</p>
+<div class="articles-list">
+  <div>
+    <div class="result">Results: {{ counter$ | async }}</div>
+    <div class="cross"></div>
+  </div>
+
+  @if((articles$ | async)?.length && !(isLoadingArticles$ | async)) {
+    <div class="articles-wrapper">
+      @for (article of (articles$ | async); track article.id) {
+        <app-article-item
+          [article]="article"
+          [searchRequest]="searchRequest$ | async"
+        ></app-article-item>
+      }
+    </div>
+  }
+</div>
+<div class="space-down"></div>
+
+@if (isLoadingArticles$ | async) {
+  <p>Loading...</p>
+}
