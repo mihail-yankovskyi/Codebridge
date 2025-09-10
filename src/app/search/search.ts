@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { loadArticles, saveSearchRequest } from '../store/actions/app.actions';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-search',
@@ -14,12 +15,10 @@ import { loadArticles, saveSearchRequest } from '../store/actions/app.actions';
   styleUrl: './search.scss'
 })
 
-export class Search implements OnInit {
+export class Search {
   searchFormControl = new FormControl('');
 
-  constructor (private store: Store) {}
-
-  ngOnInit(): void {
+  constructor (private store: Store) {
     this.subscribeToFormChanges();
   }
 
@@ -32,6 +31,7 @@ export class Search implements OnInit {
         map(value => value.trim().toLowerCase()),
         debounceTime(300),
         distinctUntilChanged(),
+        takeUntilDestroyed()
       ).subscribe((value) => {
         this.store.dispatch(saveSearchRequest({searchRequest: value}));
         this.store.dispatch(loadArticles({request: value}));
